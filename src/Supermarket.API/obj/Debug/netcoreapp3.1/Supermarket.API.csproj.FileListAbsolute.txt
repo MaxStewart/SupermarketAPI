@@ -46,3 +46,5 @@ C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\obj\Debug\
 C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\obj\Debug\netcoreapp3.1\Supermarket.API.dll
 C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\obj\Debug\netcoreapp3.1\Supermarket.API.pdb
 C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\obj\Debug\netcoreapp3.1\Supermarket.API.genruntimeconfig.cache
+C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
