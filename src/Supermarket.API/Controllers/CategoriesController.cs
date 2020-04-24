@@ -5,6 +5,7 @@ using Supermarket.API.Domain.Services;
 using Supermarket.API.Domain.Models;
 using Supermarket.API.Resources;
 using AutoMapper;
+using Supermarket.API.Extensions;
 
 namespace Supermarket.API.Controllers 
 {
@@ -27,6 +28,15 @@ namespace Supermarket.API.Controllers
             var categories = await _categoryService.ListAsync();
             var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
             return resources;
-        }    
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.GetErrorMessages());
+            }
+        } 
     }
 }
