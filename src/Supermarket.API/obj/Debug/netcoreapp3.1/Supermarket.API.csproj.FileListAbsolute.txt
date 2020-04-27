@@ -52,3 +52,6 @@ C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\
 C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\maxst\Desktop\Development\SupermarketAPI\src\Supermarket.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
