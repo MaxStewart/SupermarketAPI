@@ -1,11 +1,38 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>To-do CRUD</title>
+    <title>Supermarket System API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
 </head>
 <body>
-    <p class="test">Test</p>
+
+    <table id="tableBody">
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Category</th>
+        </tr>
+    </table>
     <script src="js/site.js"></script>
     <script type="text/javascript">
         getItems();
