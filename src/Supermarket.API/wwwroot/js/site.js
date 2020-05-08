@@ -52,11 +52,11 @@ function createItemList(data)
         cardDiv.classList += "card h-100";
 
         // Image with link
-        var imageLink = document.createElement("a");
+        /*var imageLink = document.createElement("a");
         var image = document.createElement("img");
         image.classList += "card-img-top";
         image.src = "http://placehold.it/700x400";
-        imageLink.appendChild(image);
+        imageLink.appendChild(image);*/
 
         // Card body div
         var cardBody = document.createElement("div");
@@ -71,17 +71,17 @@ function createItemList(data)
         cardTitle.appendChild(cardTitleLink);
 
         var cardPrice = document.createElement("h5");
-        cardPrice.textContent = "$55";
+        cardPrice.textContent = "$" + item.price;
 
         var cardDescription = document.createElement("p");
         cardDescription.classList += "card-text";
-        cardDescription.textContent = "Description";
+        cardDescription.textContent = item.description;
 
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardPrice);
         cardBody.appendChild(cardDescription);
 
-        cardDiv.appendChild(imageLink);
+        //cardDiv.appendChild(imageLink);
         cardDiv.appendChild(cardBody);
 
         outerDiv.appendChild(cardDiv);

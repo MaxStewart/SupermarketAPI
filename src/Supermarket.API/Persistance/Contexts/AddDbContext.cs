@@ -34,6 +34,8 @@ namespace Supermarket.API.Persistance.Contexts
             builder.Entity<Product>().HasKey(p => p.Id);
             builder.Entity<Product>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Product>().Property(p => p.Price).IsRequired();
+            builder.Entity<Product>().Property(p => p.Description).IsRequired();
             builder.Entity<Product>().Property(p => p.QuantityInPackage).IsRequired();
             builder.Entity<Product>().Property(p => p.UnitOfMeasurement).IsRequired();
 
@@ -43,6 +45,8 @@ namespace Supermarket.API.Persistance.Contexts
                 {
                     Id = 100,
                     Name = "Apple",
+                    Price = 1.99,
+                    Description = "Remember your 5+ a day",
                     QuantityInPackage = 1,
                     UnitOfMeasurement = EUnitOfMeasurement.Unity,
                     CategoryId = 100
@@ -51,6 +55,8 @@ namespace Supermarket.API.Persistance.Contexts
                 {
                     Id = 101,
                     Name = "Milk",
+                    Price = 3.99,
+                    Description = "A fine dairy product",
                     QuantityInPackage = 2,
                     UnitOfMeasurement = EUnitOfMeasurement.Liter,
                     CategoryId = 101,
