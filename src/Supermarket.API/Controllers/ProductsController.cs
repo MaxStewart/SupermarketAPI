@@ -7,6 +7,7 @@ using Supermarket.API.Domain.Models.Queries;
 using Supermarket.API.Domain.Services;
 using Supermarket.API.Resources;
 using Supermarket.API.Extensions;
+using System;
 
 namespace Supermarket.API.Controllers
 {
@@ -50,7 +51,7 @@ namespace Supermarket.API.Controllers
 
             var product = _mapper.Map<SaveProductResource, Product>(resource);
             var result = await _productService.SaveAsync(product);
-
+            Console.WriteLine(product);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
