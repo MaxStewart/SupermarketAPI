@@ -4,7 +4,7 @@ const CategoriesURI = 'api/categories';
 document.getElementById("POSTForm").addEventListener('submit', addItem)
 document.getElementById("categoryForm").addEventListener('submit', addCategory)
 
-function addItem(event) {
+async function addItem(event) {
     event.preventDefault();
 
     const addNameTextbox = document.getElementById('name');
@@ -21,24 +21,25 @@ function addItem(event) {
         CategoryId: parseInt(addCategory.value)
     };
 
-    fetch(ProductsURI, {
+    let response = await fetch(ProductsURI, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(item)
-    })
-        .then(response => response.json())
-        .then(() => {
-            alert("Your product has been added successfully") // TODO: Bug this will show even with an error
-            //getItems();
-            addNameTextbox.value = '';
-        })
-        .catch(error => console.error('Unable to add item.', error));
+    });
+
+    if (response.ok) { // if HTTP-status is 200-299
+        let json = await response.json();
+        alert("Your product has been added successfully");
+        addNameTextbox.value = '';
+    } else {
+        alert("HTTP-Error: " + response.status);
+    }
 }
 
-function addCategory(event) {
+async function addCategory(event) {
     event.preventDefault();
     const categoryName = document.getElementById('categoryName');
 
@@ -46,28 +47,34 @@ function addCategory(event) {
         name: categoryName.value
     };
 
-    fetch(CategoriesURI, {
+    let response = await fetch(CategoriesURI, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(category)
-    })
-        .then(response => response.json())
-        .then(() => {
-            alert("Your category has been added successfully") // TODO: Bug this will show even with an error
-            categoryName.value = '';
-            getItems();
-        })
-        .catch(error => console.error('Unable to add category.', error));
+    });
+
+    if (response.ok) { // if HTTP-status is 200-299
+        let json = await response.json();
+        categoryName.value = '';
+        getItems();
+        alert("Your category has been added successfully");
+    } else {
+        alert("HTTP-Error: " + response.status);
+    }
 }
 
-function getItems() {
-    fetch(CategoriesURI)
-        .then(response => response.json())
-        .then(data => createCategoriesList(data))
-        .catch(error => console.error('Unable to get items.', error));
+async function getItems() {
+    let response = await fetch(CategoriesURI);
+
+    if (response.ok) { // if HTTP-status is 200-299
+        let json = await response.json();
+        createCategoriesList(json);
+    } else {
+        alert("HTTP-Error: " + response.status);
+    }
 }
 
 function createCategoriesList(data) {
@@ -81,6 +88,5 @@ function createCategoriesList(data) {
         option.value = item.id;
 
         list.appendChild(option);
-
     });
 }
