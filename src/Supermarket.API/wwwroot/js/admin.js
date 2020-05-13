@@ -10,21 +10,14 @@ function addItem(event) {
     const addPriceTextbox = document.getElementById('price');
     const addCategory = document.getElementById('inputCategory');
     const addDescriptionTextbox = document.getElementById('description');
-    /*
-    Id = 100,
-        Name = "Apple",
-        Price = 1.99,
-        Description = "Remember your 5+ a day",
-        QuantityInPackage = 1,
-        UnitOfMeasurement = EUnitOfMeasurement.Unity,
-        CategoryId = 100*/
+    console.log(addCategory.value);
     const item = {
         name: addNameTextbox.value.trim(),
         price: parseFloat(addPriceTextbox.value.trim()),
         description: addDescriptionTextbox.value,
         QuantityInPackage: 1, // Not really used atm so hardcoded
         UnitOfMeasurement: 1, // Not really used atm so hardcoded
-        CategoryId: 100 // Currently Hardcoded until we get the categories and use the selection box
+        CategoryId: parseInt(addCategory.value)
     };
 
     console.log(JSON.stringify(item));
@@ -44,4 +37,24 @@ function addItem(event) {
             addNameTextbox.value = '';
         })
         .catch(error => console.error('Unable to add item.', error));
+}
+
+function getItems() {
+    fetch(CategoriesURI)
+        .then(response => response.json())
+        .then(data => createCategoriesList(data))
+        .catch(error => console.error('Unable to get items.', error));
+}
+
+function createCategoriesList(data) {
+    var list = document.getElementById("inputCategory");
+
+    data.forEach(item => {
+        var option = document.createElement("option");
+        option.textContent = item.name;
+        option.value = item.id;
+
+        list.appendChild(option);
+
+    });
 }

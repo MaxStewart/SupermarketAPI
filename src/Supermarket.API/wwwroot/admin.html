@@ -39,68 +39,122 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
     <div class="container">
-        <h1>Add a new product</h1>
 
-        <form id="POSTForm" method="post">
-            <!--
-                Need in the form:
-                    - Name
-                    - Price
-                    - Description
-                    - Category (Select box)
-                    - Quantity in package
-                    - unit of measurement (enum select box)
+        <div class="row">
 
-            -->
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Product Name">
+            <div class="col-lg-9">
+
+
+                <div class="row" id="itemRow">
+
+                    <div class="container">
+                        <h1 style="padding-top: 50px">Add a new product</h1>
+
+                        <form id="POSTForm" method="post" style="padding: 50px; padding-top: 20px;">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Product Name">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="price">Price</label>
+                                    <input type="number" step=".01" class="form-control" id="price" name="price" placeholder="Price">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputCategory">Category</label>
+                                    <select id="inputCategory" name="category" class="form-control">
+                                        <option selected>Choose a category</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" placeholder="Description" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                        </form>
+                    </div>
+                    <!-- /.container -->
+
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="price">Price</label>
-                    <input type="number" step=".01" class="form-control" id="price" name="price" placeholder="Price">
-                </div>
+                <!-- /.row -->
+
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCategory">Category</label>
-                    <select id="inputCategory" name="category" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Description" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Product</button>
-        </form>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
     </div>
     <!-- /.container -->
+    <!-- Page Content -->
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; SuperShopper 2020</p>
+    <footer class="page-footer font-small bg-dark pt-4 text-white">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-9 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase">About Us</h5>
+                    <p>We are a local shop selling local goods.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="admin.html">Admin Area</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
         </div>
-        <!-- /.container -->
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+            SuperShopper.com</a>
+        </div>
+        <!-- Copyright -->
+
     </footer>
-
-
+    <!-- Footer -->
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <script src="js/admin.js"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
 
 </body>
 
