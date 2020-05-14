@@ -9,11 +9,11 @@ function getCategories()
         .catch(error => console.error('Unable to get categories. ', error));
 }
 
-function getItems()
+function getItems(category)
 {
     fetch(ProductsURI)
         .then(response => response.json())
-        .then(data => createItemList(data))
+        .then(data => createItemList(data, category))
         .catch(error => console.error('Unable to get items.', error));
 }
 
@@ -21,84 +21,82 @@ function createCategoriesList(data)
 {
     var list = document.getElementById("categoryList");
 
+    // Add a selection for all categories
+    var listItem = document.createElement("a");
+    listItem.textContent = "All";
+    listItem.classList += "list-group-item";
+    listItem.href = "#";
+    listItem.onclick = function () {
+        getItems(null)
+    };
+    list.appendChild(listItem);
+
     data.forEach(item => {
         var listItem = document.createElement("a");
         listItem.textContent = item.name;
         listItem.classList += "list-group-item";
         listItem.href = "#";
+        listItem.onclick = function () {
+            getItems(item.id)
+        };
 
         list.appendChild(listItem);
 
     });
 }
 
-function createItemList(data)
+function createItemList(data, category)
 {
     var itemRow = document.getElementById("itemRow");
+    itemRow.innerHTML = "";
 
     data.items.forEach(item => {
 
-        // Outer div
-        var outerDiv = document.createElement("div");
-        outerDiv.classList += "col-lg-4 col-md-6 mb-4";
+        if (parseInt(category) == item.category.id || category == null) {
+            // Outer div
+            var outerDiv = document.createElement("div");
+            outerDiv.classList += "col-lg-4 col-md-6 mb-4";
 
-        // Card div
-        var cardDiv = document.createElement("div");
-        cardDiv.classList += "card h-100";
+            // Card div
+            var cardDiv = document.createElement("div");
+            cardDiv.classList += "card h-100";
 
-        // Image with link
-        /*var imageLink = document.createElement("a");
-        var image = document.createElement("img");
-        image.classList += "card-img-top";
-        image.src = "http://placehold.it/700x400";
-        imageLink.appendChild(image);*/
+            // Image with link
+            /*var imageLink = document.createElement("a");
+            var image = document.createElement("img");
+            image.classList += "card-img-top";
+            image.src = "http://placehold.it/700x400";
+            imageLink.appendChild(image);*/
 
-        // Card body div
-        var cardBody = document.createElement("div");
-        cardBody.classList += "card-body";
+            // Card body div
+            var cardBody = document.createElement("div");
+            cardBody.classList += "card-body";
 
-        // Card title (h4)
-        var cardTitle = document.createElement("h4");
-        cardTitle.classList += "card-title";
-        var cardTitleLink = document.createElement("a");
-        cardTitleLink.href = "#";
-        cardTitleLink.textContent = item.name;
-        cardTitle.appendChild(cardTitleLink);
+            // Card title (h4)
+            var cardTitle = document.createElement("h4");
+            cardTitle.classList += "card-title";
+            var cardTitleLink = document.createElement("a");
+            cardTitleLink.href = "#";
+            cardTitleLink.textContent = item.name;
+            cardTitle.appendChild(cardTitleLink);
 
-        var cardPrice = document.createElement("h5");
-        cardPrice.textContent = "$" + item.price;
+            var cardPrice = document.createElement("h5");
+            cardPrice.textContent = "$" + item.price;
 
-        var cardDescription = document.createElement("p");
-        cardDescription.classList += "card-text";
-        cardDescription.textContent = item.description;
+            var cardDescription = document.createElement("p");
+            cardDescription.classList += "card-text";
+            cardDescription.textContent = item.description;
 
-        cardBody.appendChild(cardTitle);
-        cardBody.appendChild(cardPrice);
-        cardBody.appendChild(cardDescription);
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardPrice);
+            cardBody.appendChild(cardDescription);
 
-        //cardDiv.appendChild(imageLink);
-        cardDiv.appendChild(cardBody);
+            //cardDiv.appendChild(imageLink);
+            cardDiv.appendChild(cardBody);
 
-        outerDiv.appendChild(cardDiv);
+            outerDiv.appendChild(cardDiv);
 
-        itemRow.appendChild(outerDiv);
-
-    /*
-     * <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">Item One</a>
-                    </h4>
-                    <h5>$24.99</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-            </div>
-        </div>
-     */
+            itemRow.appendChild(outerDiv);
+        }
     }); 
 }
