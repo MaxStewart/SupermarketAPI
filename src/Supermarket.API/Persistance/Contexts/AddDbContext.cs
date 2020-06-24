@@ -27,7 +27,10 @@ namespace Supermarket.API.Persistance.Contexts
             builder.Entity<Category>().HasData
             (
                 new Category { Id = 100, Name = "Fruits and Vegetables" }, // Id set manually due to in-memory provider
-                new Category { Id = 101, Name = "Dairy" }
+                new Category { Id = 101, Name = "Dairy" },
+                new Category { Id = 102, Name = "Confectionery" },
+                new Category { Id = 103, Name = "Meat" },
+                new Category { Id = 104, Name = "Condiments" }
             );
 
             builder.Entity<Product>().ToTable("Products");
@@ -54,12 +57,65 @@ namespace Supermarket.API.Persistance.Contexts
                 new Product
                 {
                     Id = 101,
+                    Name = "Carrots",
+                    Price = 3.99,
+                    Description = "Eat enough and you might see in the dark",
+                    QuantityInPackage = 2,
+                    UnitOfMeasurement = EUnitOfMeasurement.Liter,
+                    CategoryId = 100,
+                },
+                // Dairy Products
+                new Product
+                {
+                    Id = 102,
                     Name = "Milk",
                     Price = 3.99,
                     Description = "A fine dairy product",
                     QuantityInPackage = 2,
                     UnitOfMeasurement = EUnitOfMeasurement.Liter,
                     CategoryId = 101,
+                },
+                new Product
+                {
+                    Id = 103,
+                    Name = "Full Cream",
+                    Price = 5.99,
+                    Description = "Fresh full fat cream",
+                    QuantityInPackage = 2,
+                    UnitOfMeasurement = EUnitOfMeasurement.Liter,
+                    CategoryId = 101,
+                },
+                new Product
+                {
+                    Id = 104,
+                    Name = "Lite Cream",
+                    Price = 5.99,
+                    Description = "Fresh low fat cream",
+                    QuantityInPackage = 2,
+                    UnitOfMeasurement = EUnitOfMeasurement.Liter,
+                    CategoryId = 101,
+                },
+                // Confectionary
+                new Product
+                {
+                    Id = 105,
+                    Name = "Licorice",
+                    Price = 1.99,
+                    Description = "Lovely and bitter black licorice",
+                    QuantityInPackage = 2,
+                    UnitOfMeasurement = EUnitOfMeasurement.Liter,
+                    CategoryId = 102,
+                },
+                // Meat
+                new Product
+                {
+                    Id = 106,
+                    Name = "Venison",
+                    Price = 14.99,
+                    Description = "A great alternative to beef",
+                    QuantityInPackage = 2,
+                    UnitOfMeasurement = EUnitOfMeasurement.Liter,
+                    CategoryId = 103,
                 }
             );
         }

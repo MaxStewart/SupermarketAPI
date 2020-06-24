@@ -76,7 +76,7 @@ function createItemList(data, category)
             var cardTitle = document.createElement("h4");
             cardTitle.classList += "card-title";
             var cardTitleLink = document.createElement("a");
-            cardTitleLink.href = "#";
+            cardTitleLink.href = "item.html?" + item.id;
             cardTitleLink.textContent = item.name;
             cardTitle.appendChild(cardTitleLink);
 
