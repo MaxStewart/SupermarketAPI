@@ -47,12 +47,15 @@ function createCategoriesList(data)
 
 function createItemList(data, category)
 {
+    var numberOfItems = 0;
     var itemRow = document.getElementById("itemRow");
     itemRow.innerHTML = "";
 
     data.items.forEach(item => {
 
         if (parseInt(category) == item.category.id || category == null) {
+            numberOfItems++;
+
             // Outer div
             var outerDiv = document.createElement("div");
             outerDiv.classList += "col-lg-4 col-md-6 mb-4";
@@ -98,5 +101,13 @@ function createItemList(data, category)
 
             itemRow.appendChild(outerDiv);
         }
-    }); 
+    });
+
+    if (numberOfItems == 0) {
+        var noItemTextLine = document.createElement("p");
+        noItemTextLine.textContent = "Sorry there are currently no items under this category";
+        noItemTextLine.classList += "mx-auto ";
+        noItemTextLine.classList += "font-weight-bolder";
+        itemRow.appendChild(noItemTextLine);
+    }
 }
