@@ -89,10 +89,22 @@ function createItemList(data, category)
             var cardDescription = document.createElement("p");
             cardDescription.classList += "card-text";
             cardDescription.textContent = item.description;
+            cardDescription.style.paddingBottom = "10px";
+
+            var addToCartButton = document.createElement("button");
+            addToCartButton.type = "button";
+            addToCartButton.classList += "btn btn-primary";
+            addToCartButton.textContent = "Add To Cart";
+            addToCartButton.style.position = "absolute";
+            addToCartButton.style.bottom = "0";
+            addToCartButton.style.right = "0";
+            addToCartButton.style.margin = "5px";
+
 
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardPrice);
             cardBody.appendChild(cardDescription);
+            cardBody.appendChild(addToCartButton);
 
             //cardDiv.appendChild(imageLink);
             cardDiv.appendChild(cardBody);
