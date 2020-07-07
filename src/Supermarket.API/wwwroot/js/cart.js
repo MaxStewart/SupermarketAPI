@@ -18,14 +18,13 @@
             let tr = document.createElement("tr");
             let td1 = document.createElement("td");
             let p1 = document.createElement("p");
-            let p2 = document.createElement("p");
+            let p2 = document.createElement("small");
             let td2 = document.createElement("td");
 
             p1.style = "margin-bottom: 0px;";
             p1.textContent = cartContents[i].name;
 
-            p2.classList = "font-weight-light";
-            //p2.style += "font-size: 62.5%;";
+            //p2.classList = "font-weight-light";
             p2.textContent = cartContents[i].description;
 
             td2.classList = "text-right";
