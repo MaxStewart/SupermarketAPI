@@ -137,42 +137,30 @@ function createItemList(data, category)
 
 function addItemToCart(item) {
 
-    console.log(item.name);
-    console.log(item.price);
+    //If we have a cart already
+    if (sessionStorage.getItem("cartContents")) {      
+        // Get cart contents
+        let cartContents = JSON.parse(sessionStorage.getItem("cartContents"));
 
-}
-
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
+        // Add all current items to new array
+        let cartArray = new Array();
+        for (let i = 0; i < cartContents.length; i++) {
+            cartArray.push(cartContents[i]);
         }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
+        // Add a new item to array
+        cartArray.push(item);
+
+        // Clear and update session storage
+        sessionStorage.clear();
+        cartArray = JSON.stringify(cartArray);
+        sessionStorage.setItem("cartContents", cartArray);
     }
-    return "";
-}
-
-function checkCookie() {
-    var username = getCookie("username");
-    if (username != "") {
-        alert("Welcome again " + username);
-    } else {
-        username = prompt("Please enter your name:", "");
-        if (username != "" && username != null) {
-            setCookie("username", username, 365);
-        }
+    // There is no cart
+    else {
+        // Make a new cart and add the item
+        let cartContents = JSON.stringify(new Array(item));
+        sessionStorage.setItem("cartContents", cartContents);
     }
+
+    console.log(sessionStorage.getItem("cartContents"));
 }
